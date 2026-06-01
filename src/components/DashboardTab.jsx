@@ -4,6 +4,7 @@ import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, BarChart, 
 export default function DashboardTab({
   events,
   reports,
+  totalStudents,
   CHART_ANALYTICS_DATA,
   COLLEGE_BAR_DATA,
   setCurrentTab
@@ -44,8 +45,8 @@ export default function DashboardTab({
 
         <div className="stat-card">
           <div className="stat-info">
-            <p>Avg Match spark</p>
-            <h3>84%</h3>
+            <p>Active Students</p>
+            <h3>{totalStudents}</h3>
           </div>
           <div className="stat-icon orange">
             <UserCheck size={24} />

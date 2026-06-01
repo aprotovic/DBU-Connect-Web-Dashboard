@@ -33,6 +33,7 @@ export default function App() {
   const [currentTab, setCurrentTab] = useState("dashboard");
   const [events, setEvents] = useState([]);
   const [reports, setReports] = useState([]);
+  const [totalStudents, setTotalStudents] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [isLiveMode, setIsLiveMode] = useState(false);
@@ -183,6 +184,15 @@ export default function App() {
 
       if (reportErr) throw reportErr;
 
+      // Highly-optimized headcount of student profiles
+      const { count: studentCount, error: countErr } = await supabase
+        .from('profiles')
+        .select('*', { count: 'exact', head: true });
+
+      if (!countErr && studentCount !== null) {
+        setTotalStudents(studentCount);
+      }
+
       if (dbEvents && dbEvents.length > 0) {
         const mappedEvents = dbEvents.map(e => ({
           ...e,
@@ -207,6 +217,7 @@ export default function App() {
       console.warn("Supabase database offline or connection error:", err);
       setEvents([]);
       setReports([]);
+      setTotalStudents(42); // Local mock fallback when database is offline
       setIsLiveMode(false);
     } finally {
       setLoading(false);
@@ -422,6 +433,7 @@ export default function App() {
           <DashboardTab
             events={events}
             reports={reports}
+            totalStudents={totalStudents}
             CHART_ANALYTICS_DATA={CHART_ANALYTICS_DATA}
             COLLEGE_BAR_DATA={COLLEGE_BAR_DATA}
             setCurrentTab={setCurrentTab}
