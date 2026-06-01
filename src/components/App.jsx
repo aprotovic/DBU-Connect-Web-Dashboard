@@ -164,9 +164,14 @@ export default function App() {
   async function fetchLiveDashboardData() {
     setLoading(true);
     try {
-      const { data: dbEvents, error: eventErr } = await supabase
-        .from('events')
-        .select('*')
+      const { data: { user } } = await supabase.auth.getUser();
+
+      let query = supabase.from('events').select('*');
+      if (user) {
+        query = query.eq('created_by', user.id);
+      }
+
+      const { data: dbEvents, error: eventErr } = await query
         .order('date_time', { ascending: true });
 
       if (eventErr) throw eventErr;
@@ -213,6 +218,10 @@ export default function App() {
     if (!formTitle.trim() || !formLocation.trim()) return;
 
     setLoading(true);
+    
+    // Get logged-in user to set the created_by field
+    const { data: { user } } = await supabase.auth.getUser();
+
     const eventPayload = {
       title: formTitle,
       description: formDesc,
@@ -223,7 +232,8 @@ export default function App() {
       tags: formTags.split(',').map(t => t.trim()).filter(Boolean),
       rsvp_status: "NONE",
       attendee_count: isEditing ? isEditing.attendee_count : 0,
-      attendees_from_dept: isEditing ? isEditing.attendees_from_dept : 0
+      attendees_from_dept: isEditing ? isEditing.attendees_from_dept : 0,
+      created_by: user ? user.id : null
     };
 
     try {
