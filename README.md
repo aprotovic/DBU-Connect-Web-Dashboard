@@ -9,22 +9,6 @@ The central web administrative dashboard for **Debre Berhan University's** campu
 
 ---
 
-## 📸 Dashboard Screenshots
-
-<div align="center">
-  <img src="docs/screenshots/admin_analytics.png" alt="DBU Connect Admin Analytics" width="90%" />
-  <p><i>Figure 1: Real-time campus analytics dashboard featuring KPI cards and Recharts engagement curves.</i></p>
-</div>
-
-<div align="center">
-  <img src="docs/screenshots/event_rsvp_management.png" alt="Event RSVP and Moderation Sheets" width="90%" />
-  <p><i>Figure 2: Slide-in RSVP attendee inspection sheet with live student profile validation.</i></p>
-</div>
-
-> **Tip:** Store your screenshots in `docs/screenshots/admin_analytics.png` and `docs/screenshots/event_rsvp_management.png`.
-
----
-
 ## ✨ Features
 
 - **📊 Live Campus Analytics:** Dynamic KPI overview displaying scheduled seminars, total student RSVPs by college, and engagement trends rendered with **Recharts**.
