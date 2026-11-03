@@ -1,67 +1,66 @@
 # 📅 DBU Connect | Campus Admin & Events Portal
 
-Welcome to the **DBU Connect Admin Portal**—a state-of-the-art, high-fidelity administrative suite designed exclusively to schedule, audit, and manage campus events, match rates, and student profile moderation logs at Debre Berhan University.
+[![Vite](https://img.shields.io/badge/Bundler-Vite-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev)
+[![React](https://img.shields.io/badge/Frontend-React%2018-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Supabase](https://img.shields.io/badge/Database-Supabase%20PostgreSQL-3ECF8E?style=flat&logo=supabase&logoColor=white)](https://supabase.com)
 
-This application is built in a separate, isolated directory (`/web-dashboard`) to keep the codebase modular, clean, and distinct from the native Android client codebase.
-
----
-
-## 🚀 Key Features
-
-*   **📊 Overview Analytics:** Live KPI cards tracking scheduled events, cumulative RSVPs across colleges, open reports, and average spark rates. Includes responsive **Recharts** displaying monthly engagement curves and college registration bar metrics.
-*   **📅 Full Event CRUD:** Schedule acoustic nights, computing hackathons, and medical seminars directly to your Supabase backend. Includes location, title, custom cover banners, timestamps, and tags.
-*   **👥 Live RSVP Sheets:** Click any event card to slide in a detailed modal displaying the profiles of students attending (name, profile photo, department, and current year).
-*   **🛡️ Moderation Center:** Real-time access to student report logs. Admins can audit reports submitted by DBU students and either keep/dismiss profiles or lock/ban offending accounts instantly.
-*   **⚡ Smart Dual-Mode Failsafe:** Auto-detects Supabase credentials. If your remote tables are empty or network access is limited, the app **automatically loads a premium mock demo dataset** so it remains 100% operational immediately!
+The central web administrative dashboard for **Debre Berhan University's** campus ecosystem. Designed to manage university-wide events, track live student RSVPs across colleges, and audit student moderation feedback logs.
 
 ---
 
-## ⚙️ How to Run Locally
+## 📸 Dashboard Screenshots
 
-1.  **Navigate to the folder:**
-    ```bash
-    cd web-dashboard
-    ```
+<div align="center">
+  <img src="docs/screenshots/admin_analytics.png" alt="DBU Connect Admin Analytics" width="90%" />
+  <p><i>Figure 1: Real-time campus analytics dashboard featuring KPI cards and Recharts engagement curves.</i></p>
+</div>
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+<div align="center">
+  <img src="docs/screenshots/event_rsvp_management.png" alt="Event RSVP and Moderation Sheets" width="90%" />
+  <p><i>Figure 2: Slide-in RSVP attendee inspection sheet with live student profile validation.</i></p>
+</div>
 
-3.  **Launch the development server:**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:5173](http://localhost:5173) in your web browser.
+> **Tip:** Store your screenshots in `docs/screenshots/admin_analytics.png` and `docs/screenshots/event_rsvp_management.png`.
 
 ---
 
-## ☁️ Deploying to Vercel (1-Click)
+## ✨ Features
 
-The dashboard is pre-configured with `vercel.json` rewrite rules for Single Page Application (SPA) routing, making Vercel hosting seamless.
+- **📊 Live Campus Analytics:** Dynamic KPI overview displaying scheduled seminars, total student RSVPs by college, and engagement trends rendered with **Recharts**.
+- **📅 Full Event Lifecycle (CRUD):** Schedule academic conferences, computing hackathons, and cultural nights directly to Supabase PostgreSQL.
+- **👥 Slide-In RSVP Sheets:** Detailed attendee inspection modals detailing student names, university departments, and academic year.
+- **🛡️ Moderation Center:** Real-time audit center enabling campus administrators to review reports, resolve student disputes, and manage account locks.
+- **⚡ Dual-Mode Failsafe Engine:** Automatically detects Supabase network connectivity. If remote credentials are absent or network is restricted, the app loads a realistic mock dataset for zero-downtime demonstration.
 
-### Option A: Vercel CLI
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** React 18 (TypeScript / JavaScript), Vite
+- **Styling & UI:** Tailwind CSS, Lucide React Icons
+- **Data Visualization:** Recharts
+- **Database & Auth:** Supabase (PostgreSQL with Row Level Security)
+- **Deployment:** Pre-configured with `vercel.json` for 1-click SPA hosting
+
+---
+
+## 🚀 Quick Start
+
 ```bash
-npm install -g vercel
-vercel
-```
+# 1. Clone repository
+git clone https://github.com/aprotovic/DBU-Connect-Web-Dashboard.git
+cd DBU-Connect-Web-Dashboard
 
-### Option B: Vercel Dashboard (Recomended)
-1. Push your code to your GitHub repository.
-2. Go to **[Vercel](https://vercel.com/)** and click **"Add New Project"**.
-3. Select your repository.
-4. Set the **Root Directory** to `web-dashboard` (Vercel will auto-configure build commands `npm run build` and output directory `dist`!).
-5. Add the following **Environment Variables** (optional, fallback credentials are pre-packaged for zero-config success):
-   * `VITE_SUPABASE_URL`
-   * `VITE_SUPABASE_ANON_KEY`
-6. Click **Deploy**!
+# 2. Install dependencies
+npm install
+
+# 3. Start local development server
+npm run dev
+```
+Open **http://localhost:5173** in your browser.
 
 ---
 
-## 🛠️ Database Schema Integration
-
-The web app interfaces with the following Supabase PostgreSQL tables:
-*   `public.events` (CRUD for schedules)
-*   `public.event_rsvps` (Reads attendees)
-*   `public.profiles` (Reads attendee profile metadata)
-*   `public.reports` (Audits student feedback)
+## 📄 License
+MIT License • Debre Berhan University Campus Tech Initiative • [aprotovic](https://github.com/aprotovic)
